@@ -7,6 +7,7 @@ use App\Channel;
 use App\Playlist;
 use App\Video;
 use App\Http\Requests;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
@@ -98,10 +99,9 @@ class SyncController extends Controller
 
                             if (isset($videos->items)) {
                                 foreach ($videos->items as $video) {
-                                    dd($video);
-                                    
                                     $record = Video::firstOrNew([
                                         "youtube_id" => $video->id,
+                                        "youtube_published_at" => date("Y-m-d H:i:s", strtotime($video->snippet->publishedAt)),
                                     ]);
 
                                     $record->youtube_title = $video->snippet->title;

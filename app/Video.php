@@ -17,5 +17,6 @@ class Video extends Eloquent
     protected $fillable = [
         "youtube_id",
         "youtube_title",
+        "youtube_published_at",
     ];
 }

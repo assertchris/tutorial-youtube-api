@@ -14,6 +14,7 @@ class CreateVideoTable extends Migration
             $table->increments("id");
             $table->string("youtube_id")->index();
             $table->string("youtube_title");
+            $table->timestamp("youtube_published_at")->nullable()->default(null);
             $table->timestamps();
         });
     }
